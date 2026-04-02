@@ -160,6 +160,53 @@ body {
     }
 .material-symbols-outlined {
     font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.srv-card {
+    position: relative;
+    transition: transform 0.5s cubic-bezier(0.25,0.1,0.25,1), box-shadow 0.5s ease, border-color 0.5s ease;
+    }
+.srv-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px -15px rgba(243,105,4,0.12), 0 0 0 1px rgba(243,105,4,0.08);
+    border-color: rgba(243,105,4,0.15) !important;
+    }
+.srv-card .srv-icon-wrap {
+    position: relative;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(243,105,4,0.12) 0%, rgba(243,105,4,0.04) 100%);
+    border: 1px solid rgba(243,105,4,0.1);
+    transition: all 0.4s ease;
+    }
+.srv-card:hover .srv-icon-wrap {
+    background: linear-gradient(135deg, rgba(243,105,4,0.22) 0%, rgba(243,105,4,0.08) 100%);
+    border-color: rgba(243,105,4,0.25);
+    box-shadow: 0 8px 24px -4px rgba(243,105,4,0.2);
+    }
+.srv-card .srv-arrow {
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.4s ease;
+    }
+.srv-card:hover .srv-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    }
+.srv-progress-bar {
+    height: 2px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+    }
+.srv-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f36904, #ffb692);
+    border-radius: 2px;
+    transition: width 0.5s cubic-bezier(0.25,0.1,0.25,1);
     }</style>
 </head>
 <body class="bg-surface-container-lowest selection:bg-primary-container selection:text-white">
@@ -263,56 +310,113 @@ body {
 </div>
 </section>
 <!-- Section 6: Process -->
-<section class="py-32 bg-surface-container-low overflow-hidden">
-<div class="max-w-7xl mx-auto px-6">
-<div class="text-center mb-20">
+<section class="py-32 bg-surface-container-low overflow-hidden relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary-container/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
+<div>
+<span class="text-primary-container font-label text-sm font-bold tracking-[0.2em] uppercase mb-4 block">What We Do</span>
 <h2 class="text-4xl md:text-6xl font-black text-white tracking-tight">Our Services</h2>
 </div>
+<div class="flex items-center gap-4">
+<span class="text-sm text-neutral-500 font-label" id="srv-counter">01 / 08</span>
+<div class="srv-progress-bar w-24">
+<div class="srv-progress-fill" id="srv-progress" style="width:12.5%"></div>
+</div>
+</div>
+</div>
 <div class="relative">
-<div id="srv-track" class="flex gap-6 transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)]" style="will-change:transform">
-<div class="srv-card shrink-0 w-full md:w-[calc(50%-0.75rem)] p-8 bg-surface-container-highest/50 rounded-xl border border-outline-variant/5">
-<span class="material-symbols-outlined text-primary-container text-3xl mb-5">share</span>
-<h4 class="text-white font-bold text-lg mb-3">Social Media Management</h4>
-<p class="text-sm text-neutral-400">We effortlessly handle all your social media platforms to achieve optimal results. Entrust us with your social presence, and let your brand thrive in the digital landscape.</p>
+<div id="srv-track" class="flex gap-8 transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1)]" style="will-change:transform">
+<div class="srv-card shrink-0 w-[85%] md:w-[calc(50%-1rem)] p-10 bg-gradient-to-br from-surface-container-highest/60 to-surface-container-high/30 rounded-2xl border border-white/[0.04] backdrop-blur-sm">
+<div class="flex items-start justify-between mb-8">
+<div class="srv-icon-wrap"><span class="material-symbols-outlined text-primary-container text-2xl">share</span></div>
+<span class="text-6xl font-black text-white/[0.04] font-label leading-none">01</span>
 </div>
-<div class="srv-card shrink-0 w-full md:w-[calc(50%-0.75rem)] p-8 bg-surface-container-highest/50 rounded-xl border border-outline-variant/5">
-<span class="material-symbols-outlined text-primary-container text-3xl mb-5">edit_note</span>
-<h4 class="text-white font-bold text-lg mb-3">Content Creation</h4>
-<p class="text-sm text-neutral-400">Explore our Content Creation service, dedicated to crafting impactful content for a lasting impact. We seamlessly blend creativity and expertise to ensure your narrative stands the test of time.</p>
-</div>
-<div class="srv-card shrink-0 w-full md:w-[calc(50%-0.75rem)] p-8 bg-surface-container-highest/50 rounded-xl border border-outline-variant/5">
-<span class="material-symbols-outlined text-primary-container text-3xl mb-5">videocam</span>
-<h4 class="text-white font-bold text-lg mb-3">Product Shooting</h4>
-<p class="text-sm text-neutral-400">We showcase your brand with captivating video productions that not only drive sales but also optimize your return on investment (ROI), ensuring a powerful and effective visual presence.</p>
-</div>
-<div class="srv-card shrink-0 w-full md:w-[calc(50%-0.75rem)] p-8 bg-surface-container-highest/50 rounded-xl border border-outline-variant/5">
-<span class="material-symbols-outlined text-primary-container text-3xl mb-5">group</span>
-<h4 class="text-white font-bold text-lg mb-3">Influencer</h4>
-<p class="text-sm text-neutral-400">At the heart of our success lies the art of strategic influencer campaigns, where we expertly harness the power of digital influence to drive growth, amplifying brand reach with precision.</p>
-</div>
-<div class="srv-card shrink-0 w-full md:w-[calc(50%-0.75rem)] p-8 bg-surface-container-highest/50 rounded-xl border border-outline-variant/5">
-<span class="material-symbols-outlined text-primary-container text-3xl mb-5">ads_click</span>
-<h4 class="text-white font-bold text-lg mb-3">Meta ADS</h4>
-<p class="text-sm text-neutral-400">We will expand your business with Meta Ads. Harness the power of targeted advertising to reach your audience effectively and propel your business to new heights.</p>
-</div>
-<div class="srv-card shrink-0 w-full md:w-[calc(50%-0.75rem)] p-8 bg-surface-container-highest/50 rounded-xl border border-outline-variant/5">
-<span class="material-symbols-outlined text-primary-container text-3xl mb-5">search</span>
-<h4 class="text-white font-bold text-lg mb-3">Search Engine Optimization</h4>
-<p class="text-sm text-neutral-400">We increase sales through SEO without incurring any additional costs. Experience the power of organic growth and elevated online visibility with our strategic SEO approach.</p>
-</div>
-<div class="srv-card shrink-0 w-full md:w-[calc(50%-0.75rem)] p-8 bg-surface-container-highest/50 rounded-xl border border-outline-variant/5">
-<span class="material-symbols-outlined text-primary-container text-3xl mb-5">web</span>
-<h4 class="text-white font-bold text-lg mb-3">Landing Page</h4>
-<p class="text-sm text-neutral-400">Optimize your business results with our professional landing pages, designed to convert visitors into customers, thus providing an exceptional online experience.</p>
-</div>
-<div class="srv-card shrink-0 w-full md:w-[calc(50%-0.75rem)] p-8 bg-surface-container-highest/50 rounded-xl border border-outline-variant/5">
-<span class="material-symbols-outlined text-primary-container text-3xl mb-5">design_services</span>
-<h4 class="text-white font-bold text-lg mb-3">UI/UX</h4>
-<p class="text-sm text-neutral-400">We manage your business more efficiently with adaptive and responsive web designs tailored for web design.</p>
+<h4 class="text-white font-bold text-xl mb-3 tracking-tight">Social Media Management</h4>
+<p class="text-sm text-neutral-400 leading-relaxed mb-6">We effortlessly handle all your social media platforms to achieve optimal results. Entrust us with your social presence, and let your brand thrive in the digital landscape.</p>
+<div class="srv-arrow flex items-center gap-2 text-primary-container text-sm font-semibold">
+<span>Learn more</span><span class="material-symbols-outlined text-lg">arrow_forward</span>
 </div>
 </div>
+<div class="srv-card shrink-0 w-[85%] md:w-[calc(50%-1rem)] p-10 bg-gradient-to-br from-surface-container-highest/60 to-surface-container-high/30 rounded-2xl border border-white/[0.04] backdrop-blur-sm">
+<div class="flex items-start justify-between mb-8">
+<div class="srv-icon-wrap"><span class="material-symbols-outlined text-primary-container text-2xl">edit_note</span></div>
+<span class="text-6xl font-black text-white/[0.04] font-label leading-none">02</span>
 </div>
-<div class="flex justify-center gap-2 mt-10" id="srv-dots"></div>
+<h4 class="text-white font-bold text-xl mb-3 tracking-tight">Content Creation</h4>
+<p class="text-sm text-neutral-400 leading-relaxed mb-6">Explore our Content Creation service, dedicated to crafting impactful content for a lasting impact. We seamlessly blend creativity and expertise to ensure your narrative stands the test of time.</p>
+<div class="srv-arrow flex items-center gap-2 text-primary-container text-sm font-semibold">
+<span>Learn more</span><span class="material-symbols-outlined text-lg">arrow_forward</span>
+</div>
+</div>
+<div class="srv-card shrink-0 w-[85%] md:w-[calc(50%-1rem)] p-10 bg-gradient-to-br from-surface-container-highest/60 to-surface-container-high/30 rounded-2xl border border-white/[0.04] backdrop-blur-sm">
+<div class="flex items-start justify-between mb-8">
+<div class="srv-icon-wrap"><span class="material-symbols-outlined text-primary-container text-2xl">videocam</span></div>
+<span class="text-6xl font-black text-white/[0.04] font-label leading-none">03</span>
+</div>
+<h4 class="text-white font-bold text-xl mb-3 tracking-tight">Product Shooting</h4>
+<p class="text-sm text-neutral-400 leading-relaxed mb-6">We showcase your brand with captivating video productions that not only drive sales but also optimize your return on investment (ROI), ensuring a powerful and effective visual presence.</p>
+<div class="srv-arrow flex items-center gap-2 text-primary-container text-sm font-semibold">
+<span>Learn more</span><span class="material-symbols-outlined text-lg">arrow_forward</span>
+</div>
+</div>
+<div class="srv-card shrink-0 w-[85%] md:w-[calc(50%-1rem)] p-10 bg-gradient-to-br from-surface-container-highest/60 to-surface-container-high/30 rounded-2xl border border-white/[0.04] backdrop-blur-sm">
+<div class="flex items-start justify-between mb-8">
+<div class="srv-icon-wrap"><span class="material-symbols-outlined text-primary-container text-2xl">group</span></div>
+<span class="text-6xl font-black text-white/[0.04] font-label leading-none">04</span>
+</div>
+<h4 class="text-white font-bold text-xl mb-3 tracking-tight">Influencer</h4>
+<p class="text-sm text-neutral-400 leading-relaxed mb-6">At the heart of our success lies the art of strategic influencer campaigns, where we expertly harness the power of digital influence to drive growth, amplifying brand reach with precision.</p>
+<div class="srv-arrow flex items-center gap-2 text-primary-container text-sm font-semibold">
+<span>Learn more</span><span class="material-symbols-outlined text-lg">arrow_forward</span>
+</div>
+</div>
+<div class="srv-card shrink-0 w-[85%] md:w-[calc(50%-1rem)] p-10 bg-gradient-to-br from-surface-container-highest/60 to-surface-container-high/30 rounded-2xl border border-white/[0.04] backdrop-blur-sm">
+<div class="flex items-start justify-between mb-8">
+<div class="srv-icon-wrap"><span class="material-symbols-outlined text-primary-container text-2xl">ads_click</span></div>
+<span class="text-6xl font-black text-white/[0.04] font-label leading-none">05</span>
+</div>
+<h4 class="text-white font-bold text-xl mb-3 tracking-tight">Meta ADS</h4>
+<p class="text-sm text-neutral-400 leading-relaxed mb-6">We will expand your business with Meta Ads. Harness the power of targeted advertising to reach your audience effectively and propel your business to new heights.</p>
+<div class="srv-arrow flex items-center gap-2 text-primary-container text-sm font-semibold">
+<span>Learn more</span><span class="material-symbols-outlined text-lg">arrow_forward</span>
+</div>
+</div>
+<div class="srv-card shrink-0 w-[85%] md:w-[calc(50%-1rem)] p-10 bg-gradient-to-br from-surface-container-highest/60 to-surface-container-high/30 rounded-2xl border border-white/[0.04] backdrop-blur-sm">
+<div class="flex items-start justify-between mb-8">
+<div class="srv-icon-wrap"><span class="material-symbols-outlined text-primary-container text-2xl">search</span></div>
+<span class="text-6xl font-black text-white/[0.04] font-label leading-none">06</span>
+</div>
+<h4 class="text-white font-bold text-xl mb-3 tracking-tight">Search Engine Optimization</h4>
+<p class="text-sm text-neutral-400 leading-relaxed mb-6">We increase sales through SEO without incurring any additional costs. Experience the power of organic growth and elevated online visibility with our strategic SEO approach.</p>
+<div class="srv-arrow flex items-center gap-2 text-primary-container text-sm font-semibold">
+<span>Learn more</span><span class="material-symbols-outlined text-lg">arrow_forward</span>
+</div>
+</div>
+<div class="srv-card shrink-0 w-[85%] md:w-[calc(50%-1rem)] p-10 bg-gradient-to-br from-surface-container-highest/60 to-surface-container-high/30 rounded-2xl border border-white/[0.04] backdrop-blur-sm">
+<div class="flex items-start justify-between mb-8">
+<div class="srv-icon-wrap"><span class="material-symbols-outlined text-primary-container text-2xl">web</span></div>
+<span class="text-6xl font-black text-white/[0.04] font-label leading-none">07</span>
+</div>
+<h4 class="text-white font-bold text-xl mb-3 tracking-tight">Landing Page</h4>
+<p class="text-sm text-neutral-400 leading-relaxed mb-6">Optimize your business results with our professional landing pages, designed to convert visitors into customers, thus providing an exceptional online experience.</p>
+<div class="srv-arrow flex items-center gap-2 text-primary-container text-sm font-semibold">
+<span>Learn more</span><span class="material-symbols-outlined text-lg">arrow_forward</span>
+</div>
+</div>
+<div class="srv-card shrink-0 w-[85%] md:w-[calc(50%-1rem)] p-10 bg-gradient-to-br from-surface-container-highest/60 to-surface-container-high/30 rounded-2xl border border-white/[0.04] backdrop-blur-sm">
+<div class="flex items-start justify-between mb-8">
+<div class="srv-icon-wrap"><span class="material-symbols-outlined text-primary-container text-2xl">design_services</span></div>
+<span class="text-6xl font-black text-white/[0.04] font-label leading-none">08</span>
+</div>
+<h4 class="text-white font-bold text-xl mb-3 tracking-tight">UI/UX</h4>
+<p class="text-sm text-neutral-400 leading-relaxed mb-6">We manage your business more efficiently with adaptive and responsive web designs tailored for web design.</p>
+<div class="srv-arrow flex items-center gap-2 text-primary-container text-sm font-semibold">
+<span>Learn more</span><span class="material-symbols-outlined text-lg">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section>
 <!-- Section 3: Activities -->
@@ -585,43 +689,37 @@ lenis.on('scroll', ({ scroll }) => {
 (function() {
   const track = document.getElementById('srv-track');
   const cards = track.querySelectorAll('.srv-card');
-  const dotsWrap = document.getElementById('srv-dots');
+  const counter = document.getElementById('srv-counter');
+  const progress = document.getElementById('srv-progress');
   let current = 0;
-  const gap = 24;
+  const gap = 32;
+  const total = cards.length;
 
   function getVisible() {
     return window.innerWidth >= 768 ? 2 : 1;
   }
 
   function getMaxIndex() {
-    return Math.max(0, cards.length - getVisible());
+    return Math.max(0, total - getVisible());
   }
 
-  function buildDots() {
-    dotsWrap.innerHTML = '';
-    const total = getMaxIndex() + 1;
-    for (let i = 0; i < total; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'w-2 h-2 rounded-full transition-all duration-300 ' + (i === current ? 'bg-primary-container w-6' : 'bg-white/20');
-      dot.addEventListener('click', () => { current = i; update(); });
-      dotsWrap.appendChild(dot);
-    }
-  }
+  function pad(n) { return n < 10 ? '0' + n : n; }
 
   function update() {
     if (current > getMaxIndex()) current = getMaxIndex();
-    const card = cards[0];
-    const cardWidth = card.offsetWidth + gap;
+    const cardWidth = cards[0].offsetWidth + gap;
     track.style.transform = `translateX(-${current * cardWidth}px)`;
-    buildDots();
+    const displayNum = Math.min(current + 1, total);
+    counter.textContent = pad(displayNum) + ' / ' + pad(total);
+    progress.style.width = ((current + 1) / (getMaxIndex() + 1) * 100) + '%';
   }
 
-  // Auto-play every 3s, loops back to start
-  let autoPlay = setInterval(() => { current = current < getMaxIndex() ? current + 1 : 0; update(); }, 3000);
+  // Auto-play every 3.5s, loops back
+  let autoPlay = setInterval(() => { current = current < getMaxIndex() ? current + 1 : 0; update(); }, 3500);
   track.parentElement.addEventListener('mouseenter', () => clearInterval(autoPlay));
-  track.parentElement.addEventListener('mouseleave', () => { autoPlay = setInterval(() => { current = current < getMaxIndex() ? current + 1 : 0; update(); }, 3000); });
+  track.parentElement.addEventListener('mouseleave', () => { autoPlay = setInterval(() => { current = current < getMaxIndex() ? current + 1 : 0; update(); }, 3500); });
 
-  // Touch/swipe support
+  // Touch/swipe
   let startX = 0, isDragging = false;
   track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isDragging = true; });
   track.addEventListener('touchend', (e) => { if (!isDragging) return; const diff = startX - e.changedTouches[0].clientX; if (Math.abs(diff) > 50) { diff > 0 ? (current < getMaxIndex() && current++) : (current > 0 && current--); update(); } isDragging = false; });
