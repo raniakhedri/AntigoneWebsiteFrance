@@ -672,10 +672,15 @@ document.querySelectorAll('.nav-link').forEach(link => {
 const scrollIcon = document.getElementById('scroll-icon');
 const section2 = document.getElementById('section2');
 const siteNav = document.getElementById('site-nav');
-const iconStartY = scrollIcon.getBoundingClientRect().top + window.scrollY;
+let iconStartY = 0;
 let currentTranslateY = 0;
 
+window.addEventListener('load', () => {
+  iconStartY = scrollIcon.getBoundingClientRect().top + window.scrollY;
+});
+
 lenis.on('scroll', ({ scroll }) => {
+  if (!iconStartY) iconStartY = scrollIcon.getBoundingClientRect().top + window.scrollY;
   const navProgress = Math.min(Math.max(scroll / 180, 0), 1);
   siteNav.style.setProperty('--nav-progress', navProgress.toFixed(3));
   siteNav.style.backgroundColor = `rgba(10, 10, 10, ${0.72 * navProgress})`;
