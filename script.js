@@ -126,6 +126,10 @@ backToTop.addEventListener('click', () => lenis.scrollTo(0));
     autoPlay = setInterval(() => { current = current < getMaxIndex() ? current + 1 : 0; update(); }, 3500);
   });
 
+  // Prev/Next buttons
+  document.getElementById('srv-prev').addEventListener('click', () => { if (current > 0) { current--; update(); } });
+  document.getElementById('srv-next').addEventListener('click', () => { if (current < getMaxIndex()) { current++; update(); } });
+
   // Touch/swipe
   let startX = 0, isDragging = false;
   track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; isDragging = true; });
