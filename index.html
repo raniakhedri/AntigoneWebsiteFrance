@@ -207,6 +207,35 @@ body {
     background: linear-gradient(90deg, #f36904, #ffb692);
     border-radius: 2px;
     transition: width 0.5s cubic-bezier(0.25,0.1,0.25,1);
+    }
+#back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 60;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f36904 0%, #793000 100%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 8px 24px rgba(243,105,4,0.3);
+    }
+#back-to-top.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    }
+#back-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(243,105,4,0.4);
     }</style>
 </head>
 <body class="bg-surface-container-lowest selection:bg-primary-container selection:text-white">
@@ -221,17 +250,17 @@ body {
 </div>
             </div>
 <div class="nav-links hidden md:flex items-center gap-8">
-<a class="nav-link is-active font-inter tracking-tight text-sm uppercase font-medium" href="#">Home</a>
-<a class="nav-link font-inter tracking-tight text-sm uppercase font-medium" href="#">About</a>
-<a class="nav-link font-inter tracking-tight text-sm uppercase font-medium" href="#">Services</a>
-<a class="nav-link font-inter tracking-tight text-sm uppercase font-medium" href="#">Activities</a>
-<a class="nav-link font-inter tracking-tight text-sm uppercase font-medium" href="#">Contact</a>
+<a class="nav-link is-active font-inter tracking-tight text-sm uppercase font-medium" href="#home">Home</a>
+<a class="nav-link font-inter tracking-tight text-sm uppercase font-medium" href="#about">About</a>
+<a class="nav-link font-inter tracking-tight text-sm uppercase font-medium" href="#services">Services</a>
+<a class="nav-link font-inter tracking-tight text-sm uppercase font-medium" href="#activities">Activities</a>
+<a class="nav-link font-inter tracking-tight text-sm uppercase font-medium" href="#contact">Contact</a>
 </div>
 </div>
 </nav>
 <main>
 <!-- Section 1: Hero -->
-<section class="relative z-20 min-h-screen flex items-center justify-center pt-20 px-6 overflow-visible" style="background: url('./heroPage.png') center center / cover no-repeat;">
+<section id="home" class="relative z-20 min-h-screen flex items-center justify-center pt-20 px-6 overflow-visible" style="background: url('./heroPage.png') center center / cover no-repeat;">
 <div class="absolute inset-0 z-0 bg-black/40"></div>
 <div class="relative z-10 max-w-7xl mx-auto text-center">
 
@@ -268,8 +297,8 @@ body {
 </div>
 </div>
 </section>
-<!-- Section 4: Why Antigone / Positioning -->
-<section class="py-32 bg-surface-container-lowest">
+<!-- Section 3: About Antigone -->
+<section id="about" class="py-32 bg-surface-container-lowest">
 <div class="max-w-7xl mx-auto px-6">
 <div class="flex flex-col md:flex-row gap-20 items-center">
 <div class="w-full md:w-1/2">
@@ -306,8 +335,8 @@ body {
 </div>
 </div>
 </section>
-<!-- Section 6: Process -->
-<section class="py-32 bg-surface-container-low overflow-hidden relative">
+<!-- Section 4: Our Services -->
+<section id="services" class="py-32 bg-surface-container-low overflow-hidden relative">
 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary-container/[0.03] rounded-full blur-[120px] pointer-events-none"></div>
 <div class="max-w-7xl mx-auto px-6 relative z-10">
 <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 gap-6">
@@ -408,8 +437,8 @@ body {
 </div>
 </div>
 </section>
-<!-- Section 3: Activities -->
-<section class="py-32 px-6">
+<!-- Section 5: Our Activities -->
+<section id="activities" class="py-32 px-6">
 <div class="max-w-7xl mx-auto">
 <div class="relative text-center mb-20">
 <span class="text-primary-container font-label text-sm font-bold tracking-[0.2em] uppercase">What We do</span>
@@ -459,8 +488,8 @@ body {
 </div>
 </section>
 
-<!-- Section 5: Contact Us -->
-<section class="py-32">
+<!-- Section 6: Contact Us -->
+<section id="contact" class="py-32">
 <div class="max-w-7xl mx-auto px-6">
 <div class="text-center mb-16">
 <span class="text-primary-container font-label text-sm font-bold tracking-[0.2em] uppercase">Get In Touch</span>
@@ -525,7 +554,7 @@ Send Message
 </div>
 </section>
 
-<!-- Section 7: About / Philosophy -->
+<!-- Section 7: Philosophy & Stats -->
 <section class="py-32">
 <div class="max-w-4xl mx-auto px-6 text-center">
 <span class="text-primary-container font-label text-sm font-bold tracking-[0.2em] uppercase mb-8 block">Rooted in Tunis, Bound for the World</span>
@@ -577,7 +606,7 @@ Send Message
 </div>
 </div>
 </section>
-<!-- Section 9: Strong CTA -->
+<!-- Section 9: Call to Action -->
 <section class="py-32 px-6 relative overflow-hidden">
 <div class="absolute inset-0 bg-primary-container/5"></div>
 <div class="max-w-5xl mx-auto text-center relative z-10">
@@ -589,7 +618,7 @@ Send Message
 </div>
 </section>
 </main>
-<!-- Section 10: Footer -->
+<!-- Footer -->
 <footer class="bg-neutral-950 dark:bg-[#0a0a0a] w-full border-t border-neutral-800/20">
 <div class="grid grid-cols-2 md:grid-cols-4 gap-12 px-12 py-20 max-w-7xl mx-auto">
 <div class="col-span-2 md:col-span-1">
@@ -636,6 +665,9 @@ Send Message
 </div>
 </div>
 </footer>
+<button id="back-to-top" aria-label="Back to top">
+<span class="material-symbols-outlined text-white text-xl">keyboard_arrow_up</span>
+</button>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script>
 const lenis = new Lenis({
@@ -662,16 +694,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-document.querySelectorAll('.nav-link').forEach(link => {
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('#home, #about, #services, #activities, #contact');
+
+navLinks.forEach(link => {
   link.addEventListener('click', () => {
-    document.querySelectorAll('.nav-link').forEach(item => item.classList.remove('is-active'));
+    navLinks.forEach(item => item.classList.remove('is-active'));
     link.classList.add('is-active');
   });
 });
 
+function updateActiveNav(scrollY) {
+  let current = '';
+  sections.forEach(section => {
+    const top = section.offsetTop - 200;
+    if (scrollY >= top) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('is-active');
+    if (link.getAttribute('href') === '#' + current) link.classList.add('is-active');
+  });
+}
+
 const scrollIcon = document.getElementById('scroll-icon');
 const section2 = document.getElementById('section2');
 const siteNav = document.getElementById('site-nav');
+const backToTop = document.getElementById('back-to-top');
 let iconStartY = 0;
 let currentTranslateY = 0;
 
@@ -680,6 +728,8 @@ window.addEventListener('load', () => {
 });
 
 lenis.on('scroll', ({ scroll }) => {
+  updateActiveNav(scroll);
+  if (scroll > 400) backToTop.classList.add('visible'); else backToTop.classList.remove('visible');
   if (!iconStartY) iconStartY = scrollIcon.getBoundingClientRect().top + window.scrollY;
   const navProgress = Math.min(Math.max(scroll / 180, 0), 1);
   siteNav.style.setProperty('--nav-progress', navProgress.toFixed(3));
@@ -694,6 +744,8 @@ lenis.on('scroll', ({ scroll }) => {
   currentTranslateY += (targetTranslateY - currentTranslateY) * 0.12;
   scrollIcon.style.transform = `translateY(${currentTranslateY}px)`;
 });
+
+backToTop.addEventListener('click', () => lenis.scrollTo(0));
 
 // Services carousel
 (function() {
